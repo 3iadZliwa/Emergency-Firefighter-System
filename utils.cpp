@@ -1,11 +1,12 @@
 #include <bits/stdc++.h>
+#include "utils.h"
 using namespace std;
 
-void login()
+void login() // create login as firefighter staff and customer
 {
-    
+
 }
-void registering()
+void registering() // create register as firefighter staff customer
 {
 
 }
@@ -34,9 +35,8 @@ void MainMenu()
             exit = false;   
             break;
         default:
-            cout << "Wrong Input, Please enter a correct choice. ";           
+            cout << "Wrong Input, Please enter a correct choice. \n";           
             break;
         }
-    } while (exit);
-    
+    } while (exit);   
 }
