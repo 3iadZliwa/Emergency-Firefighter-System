@@ -23,7 +23,7 @@ public:
     virtual void printinfo() const = 0;
 };
 
-class customer : public person
+class citizen : public person
 {
 private:
     int order_in_queue;
@@ -31,10 +31,10 @@ private:
     string emergency_description;
 
 public:
-    customer();
-    customer(string, string, double, int, bool, string);
-    customer(const customer &);
-    ~customer();
+    citizen();
+    citizen(string, string, double, int, bool, string);
+    citizen(const citizen &);
+    ~citizen();
 
     int getOrderInQueue();
     bool getEmergency();
