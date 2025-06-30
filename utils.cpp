@@ -4,6 +4,9 @@ using namespace std;
 
 void login() // create login as firefighter staff and customer
 {
+    fstream firefighterstream("firefighter.txt");
+    fstream citizenstream("citizen.txt");
+    fstream staffstream("staff.txt");
     int c;
     bool exit = true;
     do
@@ -13,18 +16,61 @@ void login() // create login as firefighter staff and customer
         cout << "(1) As a Fire Fighter." << endl;
         cout << "(2) As a Citizen." << endl;
         cout << "(3) As a Staff" << endl;
-        cout << "(4) Go back to Main Menu." << endl
-             << endl;
+        cout << "(4) Go back to Main Menu." << endl << endl;
 
         cout << "Choose your option: ";
+        string email, password;
+        string stored_email,stored_pass;
         cin >> c;
         switch (c)
         {
         case 1:
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            while (firefighterstream >> stored_email >> stored_pass)
+            {
+                if (stored_email == email && stored_pass == password)
+                {
+                    exit = false;
+                    // continue logic
+                    break;
+                }
+            }
+            if(exit) cout << "Email/Password is not found" << endl;
             break;
         case 2:
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            while (citizenstream >> stored_email >> stored_pass)
+            {
+                if (stored_email == email && stored_pass == password)
+                {
+                    exit = false;
+                    // continue logic
+                    break;
+                }
+            }
+            if(exit) cout << "Email/Password is not found" << endl;
             break;
         case 3:
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            while (staffstream >> stored_email >> stored_pass)
+            {
+                if (stored_email == email && stored_pass == password)
+                {
+                    exit = false;
+                    // continue logic
+                    break;
+                }
+            }
+            if(exit){cout << "Email/Password is not found" << endl;}
             break;
         case 4:
             exit = false;
@@ -38,6 +84,10 @@ void login() // create login as firefighter staff and customer
 }
 void registering() // create register as firefighter staff customer
 {
+    fstream firefighterstream("firefighter.txt", ios::app);
+    fstream citizenstream("citizen.txt", ios::app);
+    fstream staffstream("staff.txt", ios::app);
+
     int c;
     bool exit = true;
     do
@@ -52,14 +102,33 @@ void registering() // create register as firefighter staff customer
 
         cout << "Choose your option: ";
         cin >> c;
+        string password;
+        string email;
         switch (c)
         {
         case 1:
-            
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            firefighterstream << email << " " << password << endl;
+            exit = false;
             break;
         case 2:
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            citizenstream << email << " " << password << endl;
+            exit = false;
             break;
         case 3:
+            cout << "Enter your email: ";
+            cin >> email;
+            cout << "Enter your password: ";
+            cin >> password;
+            staffstream << email << " " << password << endl;
+            exit = false;
             break;
         case 4:
             exit = false;
@@ -106,3 +175,4 @@ void MainMenu()
         }
     } while (exit);
 }
+
